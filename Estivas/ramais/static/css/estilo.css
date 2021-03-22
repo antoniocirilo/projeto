@@ -1,0 +1,21 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+.ramal{
+  background-color: #e9e3dc;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 10px;
+  border-radius: 15px;
+}
+.foto img{
+  margin-top: 31px;
+  width: 130px;
+  height: 150px;
+  border-radius: 15px;
+  align-items: center;
+}
+.numero{
+  font-weight: bold;
+  font-size: 24px;
+}

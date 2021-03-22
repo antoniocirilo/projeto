@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ramais.views import listaramais
+from ramais.views import listaramais, adminramais
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', listaramais),
+    path('ramais/', listaramais),
+    path('ramais/admin/', adminramais),
 ]

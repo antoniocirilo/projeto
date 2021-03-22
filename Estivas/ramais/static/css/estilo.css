@@ -19,3 +19,14 @@ body{
   font-weight: bold;
   font-size: 24px;
 }
+.botoes{
+  margin-top: 68px;
+}
+.botoes button{
+  margin: 4px;
+}
+.botao{
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+<title>RAMAIS - ADMIN</title>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+  <h1 class="text-center">Lista de ramais</h1>
+  <div class="row ramal">
+    <div class="col-12 col-sm-5 col-md-2 foto">
+      <img class="img-fluid img-thumbnail" src="{% static 'imagens/sem-foto.png' %}">
+    </div>
+    <div class="col-12 col-sm-6 col-md-8 texto">
+      <p>Nome: Fulano</p>
+      <p>Setor: TI</p>
+      <p>Cargo: Analista</p>
+      <p>Matrícula: 257878</p>
+      <p>Ramal: <small class="numero">8017</small></p>
+    </div>
+    <div class="col-12 col-1 col-md-2 botoes">
+    <a href="#"><button class="botao">EDITAR</button></a>
+    <a href="#"><button class="botao">APAGAR</button></a>
+    </div>
+  </div>
+</div>
+{% endblock %}

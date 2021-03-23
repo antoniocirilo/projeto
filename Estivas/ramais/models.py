@@ -8,3 +8,4 @@ class Pessoa(models.Model):
 	matricula = models.CharField('Matricula', max_length=10)
 	cc = models.CharField('Centro de custo', max_length=7, null=True)
 	ramal = models.CharField('Ramal', max_length=4)
+	foto = models.ImageField('Foto', upload_to='usuarios', null=True)

@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<br>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div class="row">
 		<div class="col-md-4 col-12">
@@ -82,6 +82,19 @@
 		</div>
 	</div>
 	<br />
+	<div class="row">
+		<div class="col-md-4 col-12">
+			<div class="row g-3 align-items-center">
+		<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Foto:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field formulario.foto class="form-control"%} 
+		</div>
+	</div>
+		</div>
+	</div>
+	<br>
 	<button type="submit" class="btn btn-outline-success">Salvar</button>
 </form>
 </div>

@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ramais.views import listaramais, adminramais, cadastroramal, atualizarramal, deletarramal
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +26,4 @@ urlpatterns = [
     path('ramais/admin/cadastro', cadastroramal, name="cadastro"),
     path('ramais/admin/atualizar/<int:id>', atualizarramal, name="atualizar"),
     path('ramais/admin/deletar/<int:id>', deletarramal, name="deletar"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

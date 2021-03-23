@@ -17,7 +17,7 @@ def adminramais(request):
 	return render(request, 'adminramais.html', contexto)
 
 def cadastroramal(request):
-	form = PessoaForm(request.POST or None)
+	form = PessoaForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
 		form.save()
 		return redirect('adminramais')
@@ -28,7 +28,7 @@ def cadastroramal(request):
 
 def atualizarramal(request, id):
 	pessoa = Pessoa.objects.get(pk=id)
-	form = PessoaForm(request.POST or None, instance=pessoa)
+	form = PessoaForm(request.POST or None, request.FILES or None, instance=pessoa)
 	if form.is_valid():
 		form.save()
 		return redirect('adminramais')

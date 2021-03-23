@@ -11,7 +11,7 @@
   {% for pessoa in lista_pessoa %}
   <div class="row ramal">
     <div class="col-12 col-sm-6 col-md-2 foto">
-      <img class="img-fluid img-thumbnail" src="{% static 'imagens/sem-foto.png' %}">
+      <img class="img-fluid img-thumbnail" src="/media/{{pessoa.foto}}">
     </div>
     <div class="col-12 col-sm-6 col-md-10 texto">
       <p>Nome: {{pessoa.nome}}</p>

@@ -7,18 +7,21 @@
 
 {% block conteudo %}
 <div class="container">
-  <h1 class="text-center">Lista de ramais</h1>
+  <h1 class="text-center">Lista de Ramais</h1>
+  {% for pessoa in lista_pessoa %}
   <div class="row ramal">
     <div class="col-12 col-sm-6 col-md-2 foto">
       <img class="img-fluid img-thumbnail" src="{% static 'imagens/sem-foto.png' %}">
     </div>
     <div class="col-12 col-sm-6 col-md-10 texto">
-      <p>Nome: Fulano</p>
-      <p>Setor: TI</p>
-      <p>Cargo: Analista</p>
-      <p>Matrícula: 257878</p>
-      <p>Ramal: <small class="numero">8017</small></p>
+      <p>Nome: {{pessoa.nome}}</p>
+      <p>Setor: {{pessoa.setor}}</p>
+      <p>Cargo: {{pessoa.cargo}}</p>
+      <p>Matrícula: {{pessoa.matricula}}</p>
+      <p>Centro de Custo: {{pessoa.cc}}</p>
+      <p>Ramal: <small class="numero">{{pessoa.ramal}}</small></p>
     </div>
   </div>
+  {% endfor %}
 </div>
 {% endblock %}

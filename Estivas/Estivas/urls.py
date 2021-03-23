@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ramais.views import listaramais, adminramais
+from ramais.views import listaramais, adminramais, cadastroramal, atualizarramal, deletarramal
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ramais/', listaramais),
-    path('ramais/admin/', adminramais),
+    path('ramais/', listaramais, name="listaramais"),
+    path('ramais/admin/', adminramais, name="adminramais"),
+    path('ramais/admin/cadastro', cadastroramal, name="cadastro"),
+    path('ramais/admin/atualizar/<int:id>', atualizarramal, name="atualizar"),
+    path('ramais/admin/deletar/<int:id>', deletarramal, name="deletar"),
 ]

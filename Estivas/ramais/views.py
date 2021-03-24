@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect
 from .models import Pessoa
 from .forms import PessoaForm
+from .filters import FiltroPessoa
 # Create your views here.
 def listaramais(request):
-	pessoa = Pessoa.objects.all()
+	pessoa = Pessoa.objects.all().order_by('-id')
+	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
 	contexto = {
-	'lista_pessoa': pessoa
+	'filtro': meufiltro
 	}
 	return render(request, 'listaramais.html', contexto)
 
 def adminramais(request):
-	pessoa = Pessoa.objects.all()
+	pessoa = Pessoa.objects.all().order_by('-id')
+	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
 	contexto = {
-	'lista_pessoa': pessoa
+	'filtro': meufiltro
 	}
 	return render(request, 'adminramais.html', contexto)
 

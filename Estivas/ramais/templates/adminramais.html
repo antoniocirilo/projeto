@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block titulo %}
 <title>RAMAIS - ADMIN</title>
@@ -7,9 +8,41 @@
 
 {% block conteudo %}
 <div class="container">
-  <h1 class="text-center">Lista de Ramais</h1>
+  <h1 class="text-center">Lista de Colaboradores</h1>
   <h4 class="text-end"><a href="{% url 'cadastro' %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">CADASTRAR USUÁRIO</button></a></h4>
-  {% for pessoa in lista_pessoa %}
+  <form method="get">
+    <div class="row">
+      <div class="col-md-1">
+        
+      </div>
+    <div class="col-md-4 col-12">
+      <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="inputPassword6" class="col-form-label">Nome:</label>
+    </div>
+    <div class="col-auto">
+      {% render_field filtro.form.nome class="form-control"%}
+    </div>
+  </div>
+    </div>
+    <div class="col-md-4 col-12">
+      <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="inputPassword6" class="col-form-label">Setor:</label>
+    </div>
+    <div class="col-auto">
+      {% render_field filtro.form.setor class="form-control"%} 
+    </div>
+  </div>
+    </div>
+    <div class="col-md-3 col-12">
+    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i> pesquisar</button>
+  </div>
+  </div>
+</form>
+<br>
+  {% for pessoa in filtro.qs %}
+  
   <div class="row ramal">
     <div class="col-12 col-sm-5 col-md-2 foto">
       <img class="img-fluid img-thumbnail" src="/media/{{pessoa.foto}}">

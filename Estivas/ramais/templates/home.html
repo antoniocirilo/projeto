@@ -8,7 +8,7 @@
 
 {% block conteudo %}
 <div class="container">
-  <form method="get" action="?nome=&setor=">
+  <form method="get" action="ramais/?nome=&setor=">
     <div class="row">
       <div class="col-md-1">
         
@@ -39,22 +39,5 @@
   </div>
 </form>
 <br>
-  {% for pessoa in filtro.qs %}
-  <div class="row ramal">
-    <div class="col-12 col-sm-6 col-md-2 foto">
-      <img class="img-fluid img-thumbnail" src="/media/{{pessoa.foto}}">
-    </div>
-    <div class="col-12 col-sm-6 col-md-10 texto">
-      <td>
-      <p>Nome: {{pessoa.nome}}</p>
-      <p>Setor: {{pessoa.setor}}</p>
-      <p>Cargo: {{pessoa.cargo}}</p>
-      <p>Matrícula: {{pessoa.matricula}}</p>
-      <p>Centro de Custo: {{pessoa.cc}}</p>
-      <p>Ramal: <small class="numero">{{pessoa.ramal}}</small></p>
-    </td>
-    </div>
-  </div>
-  {% endfor %}
 </div>
 {% endblock %}

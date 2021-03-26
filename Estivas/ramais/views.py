@@ -4,14 +4,14 @@ from .forms import PessoaForm
 from .filters import FiltroPessoa
 # Create your views here.
 def inicial(request):
-	pessoa = Pessoa.objects.all().order_by('-id')
+	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
 	contexto = {
 	'filtro': meufiltro
 	}
 	return render(request, 'home.html', contexto)
 def listaramais(request):
-	pessoa = Pessoa.objects.all().order_by('-id')
+	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
 	contexto = {
 	'filtro': meufiltro
@@ -19,7 +19,7 @@ def listaramais(request):
 	return render(request, 'listaramais.html', contexto)
 
 def adminramais(request):
-	pessoa = Pessoa.objects.all().order_by('-id')
+	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
 	contexto = {
 	'filtro': meufiltro

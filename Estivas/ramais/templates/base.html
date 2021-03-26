@@ -13,17 +13,26 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class="row">
-		<div class="col-md-1">
-			
-		</div>
-		<div class="col-md-10">
-			<img class="ing-fluid" src="{% static 'imagens/logo.png' %}">
-		</div>
-	<div class="col-12 col-sm-6 col-md-1">
-      
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'imagens/usina-estivas.jpg' %}" alt="" width="120" height="60" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Ramais</a>
+        <!--
+        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Pricing</a> -->
+      </div>
     </div>
-</div>
+  </div>
+</nav>
+	</div>
 <br>
 	{% block conteudo %}
 	{% endblock %}

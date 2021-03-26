@@ -36,3 +36,6 @@ body{
 .logo img{
   width: 100px;
 }
+.texto p{
+  text-transform: capitalize;
+}

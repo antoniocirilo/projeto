@@ -4,4 +4,4 @@ from .models import Pessoa
 class PessoaForm(ModelForm):
 	class Meta:
 		model = Pessoa
-		fields = ['nome', 'setor', 'cargo', 'matricula', 'cc','ramal', 'foto']
+		fields = ['nome', 'setor', 'cargo', 'matricula', 'email', 'cc','ramal', 'foto']

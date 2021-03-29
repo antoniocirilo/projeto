@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block conteudo %}
-{% if formulario.errors %}
+<div class="container">
+	{% if formulario.errors %}
 <div class="alert alert-danger">
-        <strong>Matrícula já cadastrada no banco de dados</strong>
+        <strong>Matrícula ou Email já cadastrados no banco de dados</strong>
     </div>
 {% endif %}
-<div class="container">
 	<div class="row">
 		<div class="col-md-12 col-12">
 			<h1 class="text-center">Administração</h1>
@@ -68,13 +68,26 @@
 		<div class="col-md-4 col-12">
 			<div class="row g-3 align-items-center">
 		<div class="col-auto">
-			<label for="inputPassword6" class="col-form-label">Centro de Custo:</label>
+			<label for="inputPassword6" class="col-form-label">Email:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field formulario.email class="form-control"%} 
+		</div>
+	</div>
+		</div>
+		<div class="col-md-4 col-12">
+			<div class="row g-3 align-items-center">
+		<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Centro de custo:</label>
 		</div>
 		<div class="col-auto">
 			{% render_field formulario.cc class="form-control"%} 
 		</div>
 	</div>
 		</div>
+	</div>
+	<br />
+	<div class="row">
 		<div class="col-md-4 col-12">
 			<div class="row g-3 align-items-center">
 		<div class="col-auto">
@@ -85,9 +98,6 @@
 		</div>
 	</div>
 		</div>
-	</div>
-	<br />
-	<div class="row">
 		<div class="col-md-4 col-12">
 			<div class="row g-3 align-items-center">
 		<div class="col-auto">

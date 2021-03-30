@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Pessoa
 from .forms import PessoaForm
 from .filters import FiltroPessoa
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 def inicial(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
@@ -13,16 +14,24 @@ def inicial(request):
 def listaramais(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
+	paginator = Paginator(meufiltro.qs, 5)
+	page = request.GET.get('page')
+	contacts = paginator.get_page(page)
 	contexto = {
-	'filtro': meufiltro
+	'filtro': meufiltro, 
+	'contacts': contacts
 	}
 	return render(request, 'listaramais.html', contexto)
 
 def adminramais(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
+	paginator = Paginator(meufiltro.qs, 5)
+	page = request.GET.get('page')
+	contacts = paginator.get_page(page)
 	contexto = {
-	'filtro': meufiltro
+	'filtro': meufiltro, 
+	'contacts': contacts
 	}
 	return render(request, 'adminramais.html', contexto)
 

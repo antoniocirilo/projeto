@@ -40,7 +40,7 @@
   </div>
 </form>
 <br>
-  {% for pessoa in filtro.qs %}
+  {% for pessoa in contacts %}
   
   <div class="row ramal">
     <div class="col-12 col-sm-5 col-md-2 foto">
@@ -81,7 +81,27 @@
     </div>
   </div>
   {% endfor %}
+  <br>
+    <div class="row">
+      <div class="col-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {% if contacts.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">Mais novos</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ contacts.previous_page_number }}">Anterior</a></li>
+            {% endif %}
 
+            {% if contacts.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ contacts.next_page_number }}">Próximo</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ contacts.paginator.num_pages }}">Mais antigos</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <span class="current">
+          Página {{ contacts.number }} de {{ contacts.paginator.num_pages }}.
+        </span>
+      </div>
+    </div>
 
 </div>
 

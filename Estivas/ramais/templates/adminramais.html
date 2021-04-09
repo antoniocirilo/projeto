@@ -47,13 +47,13 @@
       <img class="img-fluid img-thumbnail" src="/media/{{pessoa.foto}}">
     </div>
     <div class="col-12 col-sm-6 col-md-8 texto">
-      <p>Nome: {{pessoa.nome}}</p>
-      <p>Setor: {{pessoa.setor}}</p>
-      <p>Cargo: {{pessoa.cargo}}</p>
-      <p>Matrícula: {{pessoa.matricula}}</p>
-      <p style="display: inline;">Email: <p style="text-transform: lowercase; display: inline;">{{pessoa.email}}</p></p>
-      <p>Centro de Custo: {{pessoa.cc}}</p>
-      <p>Ramal: <small class="numero">{{pessoa.ramal}}</small></p>
+      <p> <b>Nome:</b> {{pessoa.nome}}</p>
+      <p> <b>Setor:</b> {{pessoa.setor}}</p>
+      <p> <b>Cargo:</b> {{pessoa.cargo}}</p>
+      <p> <b>Matrícula:</b> {{pessoa.matricula}}</p>
+      <p style="display: inline;"> <b>Email:</b> <p style="text-transform: lowercase; display: inline;">{{pessoa.email}}</p></p>
+      <p> <b>Centro de Custo:</b> {{pessoa.cc}}</p>
+      <p> <b>Ramal:</b> <small class="numero">{{pessoa.ramal}}</small></p>
     </div>
     <div class="col-12 col-1 col-md-2 botoes">
     <a href="{% url 'atualizar' pessoa.id %}"><button type="button" class="btn botao btn-outline-success">EDITAR</button></a>

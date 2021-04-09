@@ -14,7 +14,7 @@ def inicial(request):
 def listaramais(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
-	paginator = Paginator(meufiltro.qs, 10)
+	paginator = Paginator(meufiltro.qs, 12)
 	page = request.GET.get('page')
 	contacts = paginator.get_page(page)
 	contexto = {
@@ -26,7 +26,7 @@ def listaramais(request):
 def adminramais(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
-	paginator = Paginator(meufiltro.qs, 5)
+	paginator = Paginator(meufiltro.qs, 12)
 	page = request.GET.get('page')
 	contacts = paginator.get_page(page)
 	contexto = {

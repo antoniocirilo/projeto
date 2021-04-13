@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_cleanup',
     'ramais',
+    'ramais.apps',
 ]
 
 MIDDLEWARE = [

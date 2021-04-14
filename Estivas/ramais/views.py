@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Pessoa
-from .forms import PessoaForm
+from .models import Pessoa, Noticia
+from .forms import PessoaForm, NoticiaForm
 from .filters import FiltroPessoa
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from datetime import datetime
 # Create your views here.
 def inicial(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
@@ -11,6 +12,36 @@ def inicial(request):
 	'filtro': meufiltro
 	}
 	return render(request, 'home.html', contexto)
+
+'''
+noticias
+'''
+
+def noticias(request):
+	return render(request, 'noticias/noticias.html')
+
+def adminnoticias(request):
+	noticias = Noticia.objects.all().order_by('-id')
+	contexto = {
+	'noticias': noticias
+	}
+	return render(request, 'noticias/adminnoticias.html', contexto)
+
+def cadastronoticia(request):
+	data_hora = datetime.now()
+	form = NoticiaForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		noticia = form.save(commit=False)
+		noticia.datahora = data_hora
+		noticia.save()
+		return redirect('adminnoticias')
+	contexto = {
+	'form': form
+	}
+	return render(request, 'noticias/cadastronoticia.html', contexto)
+'''
+Lista de colaboradores
+'''
 def listaramais(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)

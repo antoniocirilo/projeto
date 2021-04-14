@@ -17,10 +17,17 @@
 			margin-top: -20px;
 			font-size: 13px;
 		}
+		.cabecalho {
+			background-color: #1c4049;
+			padding: 0px 60px;
+		}
+		.navbar-nav a:hover{
+			color: #a1c83d;
+		}
 	</style>
 </head>
 <body>
-	<div class="container" style="background-color: #1c4049;">
+	<div class="container-fluid cabecalho">
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="{% url 'inicial' %}">
@@ -31,6 +38,9 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
+						<a class="link-light nav-link" aria-current="page" href="#">Início</a>
+						<a class="link-light nav-link" aria-current="page" href="{% url 'noticias' %}">Notícias</a>
+						<a class="link-light nav-link" aria-current="page" href="https://webmail.usinaestivas.com.br/">Email</a>
 						<a class=" link-light nav-link" aria-current="page" href="{% url 'inicial' %}">Lista de colaboradores</a>
         <!--
         <a class="nav-link" href="#">Features</a>

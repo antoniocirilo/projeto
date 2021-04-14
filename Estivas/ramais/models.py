@@ -10,3 +10,11 @@ class Pessoa(models.Model):
 	cc = models.CharField('Centro de custo', max_length=7, null=True)
 	ramal = models.CharField('Ramal', max_length=9, null=True, default='Sem ramal')
 	foto = models.ImageField('Foto', upload_to='usuarios', default='usuarios/sem-foto.png')
+
+class Noticia(models.Model):
+	titulo = models.CharField('Título', max_length=50)
+	subtitulo = models.CharField('subtítulo', max_length=50)
+	noticia = models.TextField('Notícia')
+	imagem = models.ImageField('Imagem', upload_to="fotoprincipal")
+	anexo = models.FileField('Anexo:', upload_to='anexos', null = True)
+	datahora = models.DateTimeField('datahora', null=True)

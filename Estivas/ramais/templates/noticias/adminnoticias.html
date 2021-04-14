@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>Noticias - admin</title>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+	<h4 class="text-end"><a href="{% url 'cadastronoticia' %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">CADASTRAR NOTÍCIA</button></a></h4>
+	{% for noticia in noticias %}
+	<div class="row">
+		<div class="col-md-2 col-4 foto">
+			<img class="img-fluid img-thumbnail" src="/media/{{noticia.imagem}}">
+		</div>
+		<div class="col-md-8 col-8">
+			<p>{{noticia.titulo}}</p>
+			<p>{{noticia.subtitulo}}</p>
+		</div>
+		<div class="col-md-2 col-12">
+			<a href="{% url 'cadastronoticia' %}"><button type="button" class="btn botao btn-outline-success">EDITAR</button></a> <br> <br>
+			<a href="{% url 'cadastronoticia' %}"><button type="button" class="btn botao btn-outline-danger">APAGAR</button></a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

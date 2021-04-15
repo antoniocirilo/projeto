@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ramais.views import inicial, noticias, adminnoticias, cadastronoticia, listaramais, adminramais, cadastroramal, atualizarramal, deletarramal
+from ramais.views import inicial, noticias, noticiaespecifica, adminnoticias, cadastronoticia, atualizarnoticia, deletarnoticia, listaramais, adminramais, cadastroramal, atualizarramal, deletarramal
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,8 +23,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicial, name="inicial"),
     path('noticias/', noticias ,name="noticias"),
+    path('noticias/noticia/<int:id>', noticiaespecifica, name="noticiaespecifica"),
     path('noticias/admin/', adminnoticias ,name="adminnoticias"),
     path('noticias/admin/cadastro', cadastronoticia, name="cadastronoticia"),
+    path('noticias/admin/atualizar/<int:id>', atualizarnoticia, name="atualizarnoticia"),
+    path('noticias/admin/deletar/<int:id>', deletarnoticia, name="deletarnoticia"),
     path('ramais/', listaramais, name="listaramais"),
     path('ramais/admin/', adminramais, name="adminramais"),
     path('ramais/admin/cadastro', cadastroramal, name="cadastro"),

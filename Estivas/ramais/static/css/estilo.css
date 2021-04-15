@@ -1,5 +1,6 @@
 body{
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
+  background-color: #fefefe;
 }
 .ramal{
   background-color: #e9e3dc;
@@ -38,4 +39,28 @@ body{
 }
 .texto p{
   text-transform: capitalize;
+}
+
+.imagem img {
+  width: 400px;
+  height: 220px;
+  align-items: center;
+}
+.noticia {
+  margin: 30px 0;
+}
+.noticia h4{
+  color: #c41f1f;
+}
+.noticia h5{
+  color: #55c3c0;
+}
+.noticia-link{
+  text-decoration: none;
+}
+.fundo-imagem h1{
+  font-weight: bold;
+}
+.foto-noticia img{
+  width: 100%;
 }

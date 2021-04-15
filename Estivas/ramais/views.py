@@ -20,6 +20,13 @@ noticias
 def noticias(request):
 	return render(request, 'noticias/noticias.html')
 
+def noticiaespecifica(request, id):
+	noticia = Noticia.objects.get(pk=id)
+	contexto = {
+	'noticia': noticia
+	}
+	return render(request, 'noticias/noticia.html', contexto)
+
 def adminnoticias(request):
 	noticias = Noticia.objects.all().order_by('-id')
 	contexto = {
@@ -39,6 +46,25 @@ def cadastronoticia(request):
 	'form': form
 	}
 	return render(request, 'noticias/cadastronoticia.html', contexto)
+
+def atualizarnoticia(request, id):
+	data_hora = datetime.now()
+	noticia = Noticia.objects.get(pk=id)
+	form = NoticiaForm(request.POST or None, request.FILES or None, instance=noticia)
+	if form.is_valid():
+		noticia = form.save(commit=False)
+		noticia.datahora = data_hora
+		noticia.save()
+		return redirect('adminnoticias')
+	contexto = {
+	'form': form
+	}
+	return render(request, 'noticias/cadastronoticia.html', contexto)
+
+def deletarnoticia(request, id):
+	noticia = Noticia.objects.get(pk=id)
+	noticia.delete()
+	return redirect('adminnoticias')
 '''
 Lista de colaboradores
 '''

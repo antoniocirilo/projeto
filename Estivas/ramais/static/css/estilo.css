@@ -55,6 +55,9 @@ body{
 .noticia h5{
   color: #55c3c0;
 }
+.noticia small{
+  color: grey;
+}
 .noticia-link{
   text-decoration: none;
 }
@@ -62,5 +65,7 @@ body{
   font-weight: bold;
 }
 .foto-noticia img{
-  width: 100%;
+  width: 90%;
+  max-width: 100%;
+  align-items: center;
 }

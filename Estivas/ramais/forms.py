@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Pessoa, Noticia
+from .models import Pessoa, Noticia, Aniversariante, Informativo
 from django import forms
 
 class PessoaForm(ModelForm):
@@ -13,3 +13,13 @@ class NoticiaForm(ModelForm):
 	class Meta:
 		model = Noticia
 		fields = ['titulo', 'subtitulo', 'noticia', 'imagem', 'anexo']
+
+class AniversarianteForm(ModelForm):
+	class Meta:
+		model = Aniversariante
+		fields = ['nome', 'cargo']
+
+class InformativoForm(ModelForm):
+	class Meta:
+		model = Informativo
+		fields = ['mes', 'fotoinformativo', 'anexo']

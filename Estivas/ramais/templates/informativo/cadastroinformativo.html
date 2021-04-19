@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>INFORMATIVO - CADASTRO</title>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+	{% if form.errors %}
+<div class="alert alert-danger">
+        <strong>ERRO AO CADASTRAR INFORMATIVO</strong>
+    </div>
+{% endif %}
+<div class="row">
+	<div class="row">
+		<div class="col-md-12 col-12">
+			<h1 class="text-center">Cadastro de informativo</h1>
+		</div>
+	</div>
+	<br>
+</div>
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Mês:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.mes class="form-control"%} 
+		</div>
+
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Foto:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.fotoinformativo class="form-control"%} 
+		</div>
+
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Anexo:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.anexo class="form-control"%} 
+		</div>
+	<br>
+	<button type="submit" class="btn btn-outline-success">Salvar Informativo</button>
+</form>
+</div>
+{% endblock %}

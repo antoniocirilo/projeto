@@ -16,14 +16,14 @@
 
 	<div class="row">
 		<div class="col-md-8 foto-noticia">
-			<img class="img-fluid img-thumbnail" src="/media/{{noticia.imagem}}">
+			<p class="text-center"><img class="img-fluid img-thumbnail" src="/media/{{noticia.imagem}}"></p>
 		</div>
 		<div class="col-md-4">
-			{{noticia.noticia}}
+			<p>{{noticia.noticia}}</p>
 			{% if noticia.anexo != "" %}
 			<a href="/media/{{noticia.anexo}}" target="_blank"> <button class="btn btn-success">Baixar Anexo</button></a>
 			{% else %}
-			<p>Sem anexo</p>
+			
 			{% endif %}
 		</div>
 	</div>

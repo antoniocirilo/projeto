@@ -1,24 +1,28 @@
 from django.shortcuts import render, redirect
-from .models import Pessoa, Noticia
-from .forms import PessoaForm, NoticiaForm
+from .models import Pessoa, Noticia, Aniversariante, Informativo
+from .forms import PessoaForm, NoticiaForm, AniversarianteForm, InformativoForm
 from .filters import FiltroPessoa
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
 # Create your views here.
-def inicial(request):
-	pessoa = Pessoa.objects.all().order_by('nome')
-	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
+def home(request):
+	noticia1 = Noticia.objects.all().order_by('-id')[:3]
+	aniversariantes = Aniversariante.objects.all().order_by('nome')
 	contexto = {
-	'filtro': meufiltro
+	'noticias': noticia1,
+	'aniversariantes': aniversariantes
 	}
-	return render(request, 'home.html', contexto)
-
+	return render(request, 'index.html', contexto)
 '''
 noticias
 '''
 
 def noticias(request):
-	return render(request, 'noticias/noticias.html')
+	noticias = Noticia.objects.all().order_by('-id')
+	contexto = {
+	'noticias': noticias
+	}
+	return render(request, 'noticias/noticias.html', contexto)
 
 def noticiaespecifica(request, id):
 	noticia = Noticia.objects.get(pk=id)
@@ -65,9 +69,85 @@ def deletarnoticia(request, id):
 	noticia = Noticia.objects.get(pk=id)
 	noticia.delete()
 	return redirect('adminnoticias')
+
+'''
+aniversariantes
+'''
+def aniversariantes(request):
+	aniversariante = Aniversariante.objects.all()
+	contexto = {
+	'aniversariantes': aniversariante
+	}
+	return render(request, 'aniveriantes/aniversariantes.html', contexto)
+
+def cadastroaniversariantes(request):
+	form = AniversarianteForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		form.save()
+		return redirect('aniversariantes')
+	contexto = {
+	'form': form
+	}
+	return render(request, 'aniveriantes/cadastroaniversariantes.html', contexto)
+
+def atualizaraniversariantes(request, id):
+	aniversariante = Aniversariante.objects.get(pk=id)
+	form = AniversarianteForm(request.POST or None, request.FILES or None, instance=aniversariante)
+	if form.is_valid():
+		form.save()
+		return redirect('aniversariantes')
+	contexto = {
+	'form': form
+	}
+	return render(request, 'aniveriantes/cadastroaniversariantes.html', contexto)
+
+def deletaraniversariantes(request,id):
+	aniversariante = Aniversariante.objects.get(pk=id)
+	aniversariante.delete()
+	return redirect('aniversariantes')
+
+'''
+Informativo
+'''
+def informativo(request):
+	informativo = Informativo.objects.all()
+	contexto = {
+	'informativo': informativo
+	}
+	return render(request, 'informativo/informativo.html', contexto)
+
+def cadastroinformativo(request):
+	form = InformativoForm(request.POST or None, request.FILES or None)
+	if form.is_valid():
+		form.save()
+		return redirect('informativo')
+	contexto = {
+	'form': form
+	}
+	return render(request, 'informativo/cadastroinformativo.html', contexto)
+
+def atualizarinformativo(request, id):
+	informativo = Informativo.objects.get(pk=id)
+	form = InformativoForm(request.POST or None, request.FILES or None, instance=informativo)
+	if form.is_valid():
+		form.save()
+		return redirect('informativo')
+	contexto = {
+	'form': form
+	}
+	return render(request, 'informativo/cadastroinformativo.html', contexto)
+
 '''
 Lista de colaboradores
 '''
+def inicial(request):
+	pessoa = Pessoa.objects.all().order_by('nome')
+	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)
+	contexto = {
+	'filtro': meufiltro
+	}
+	return render(request, 'home.html', contexto)
+
 def listaramais(request):
 	pessoa = Pessoa.objects.all().order_by('nome')
 	meufiltro = FiltroPessoa(request.GET, queryset=pessoa)

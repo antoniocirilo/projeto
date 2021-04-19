@@ -18,3 +18,13 @@ class Noticia(models.Model):
 	imagem = models.ImageField('Imagem', upload_to="fotoprincipal")
 	anexo = models.FileField('Anexo:', upload_to='anexos', null = True)
 	datahora = models.DateTimeField('datahora', null=True)
+
+class Aniversariante(models.Model):
+	nome = models.CharField('Nome', max_length=150)
+	cargo = models.CharField('Cargo', max_length=50)
+	padrao = models.ImageField('Foto', upload_to='aniversario', default='aniversario/aniversariante.jpg')
+
+class Informativo(models.Model):
+	mes = models.CharField('Mes', max_length=15)
+	fotoinformativo = models.ImageField('fotoinformativo', upload_to='informativo')
+	anexo = models.FileField('Anexoinformativo', upload_to='informativo')

@@ -20,9 +20,9 @@ class Noticia(models.Model):
 	datahora = models.DateTimeField('datahora', null=True)
 
 class Aniversariante(models.Model):
-	nome = models.CharField('Nome', max_length=150)
-	cargo = models.CharField('Cargo', max_length=50)
-	padrao = models.ImageField('Foto', upload_to='aniversario', default='aniversario/aniversariante.jpg')
+	#nome = models.CharField('Nome', max_length=150)
+	#cargo = models.CharField('Cargo', max_length=50)
+	padrao = models.ImageField('Foto', upload_to='aniversario')
 
 class Informativo(models.Model):
 	mes = models.CharField('Mes', max_length=15)

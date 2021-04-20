@@ -4,6 +4,11 @@
 
 {% block titulo %}
 <title>Página Inicial</title>
+<style type="text/css">
+	small{
+		color: grey
+	}
+</style>
 {% endblock %}
 
 {% block conteudo %}
@@ -29,36 +34,32 @@
 			</a>
 		</div>
 		{% if forloop.first %}
-		<div class="col-md-4">
+		<div class="col-md-4 imagem">
 			<h3>Aniversariantes do dia:</h3>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">Nome</th>
-						<th scope="col">Cargo</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for aniversariante in aniversariantes %}
-					<tr>
-						<td>{{aniversariante.nome}}</td>
-						<td>{{aniversariante.cargo}}</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+			<small>Clique na imagem para ampliar</small>
+			{% for aniversariante in aniversariantes %}
+			<a href="/media/{{aniversariante.padrao}}" target="_blank">
+			<img class="img-fluid img-thumbnail" src="/media/{{aniversariante.padrao}}">
+			</a>
+			{% endfor %}
 		</div>
 		{% endif%}
 
 		{% if forloop.counter == 2 %}
-		<div class="col-md-4">
-			<h3>Noticias em foco</h3>
+		<div class="col-md-4 imagem">
+			{% for informativo in informativo %}
+			<h3>Informativo do mês de {{informativo.mes}}</h3>
+			<small>Clique no informativo para saber mais</small>
+						<a href="{% url 'infoespecifico' informativo.mes %}">
+			<img class="img-fluid img-thumbnail" src="/media/{{informativo.fotoinformativo}}">
+		</a>
+			{% endfor %}
 		</div>
 		{% endif%}
 
 		{% if forloop.counter == 3 %}
 		<div class="col-md-4">
-			<h3>Saiba mais</h3>
+			
 		</div>
 		{% endif%}
 	</div>

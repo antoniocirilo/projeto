@@ -17,7 +17,7 @@ class NoticiaForm(ModelForm):
 class AniversarianteForm(ModelForm):
 	class Meta:
 		model = Aniversariante
-		fields = ['nome', 'cargo']
+		fields = ['padrao']
 
 class InformativoForm(ModelForm):
 	class Meta:

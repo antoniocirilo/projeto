@@ -24,17 +24,10 @@
 <form method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div class="col-auto">
-			<label for="inputPassword6" class="col-form-label">Nome:</label>
+			<label for="inputPassword6" class="col-form-label">foto:</label>
 		</div>
 		<div class="col-auto">
-			{% render_field form.nome class="form-control"%} 
-		</div>
-
-	<div class="col-auto">
-			<label for="inputPassword6" class="col-form-label">Cargo:</label>
-		</div>
-		<div class="col-auto">
-			{% render_field form.cargo class="form-control"%} 
+			{% render_field form.padrao class="form-control"%} 
 		</div>
 	<br>
 	<button type="submit" class="btn btn-outline-success">Salvar Aniversariante</button>

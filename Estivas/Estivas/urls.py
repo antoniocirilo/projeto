@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ramais.views import home, inicial, noticias, noticiaespecifica, adminnoticias, cadastronoticia, atualizarnoticia, deletarnoticia, aniversariantes, cadastroaniversariantes, atualizaraniversariantes, deletaraniversariantes, informativo, cadastroinformativo, atualizarinformativo,listaramais, adminramais, cadastroramal, atualizarramal, deletarramal
+from ramais.views import home, infoespecifico, inicial, noticias, noticiaespecifica, adminnoticias, cadastronoticia, atualizarnoticia, deletarnoticia, aniversariantes, cadastroaniversariantes, atualizaraniversariantes, deletaraniversariantes, informativo, cadastroinformativo, atualizarinformativo,listaramais, adminramais, cadastroramal, atualizarramal, deletarramal
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
+    path('informativo/<str:mes>', infoespecifico, name="infoespecifico"),
     path('noticias/', noticias ,name="noticias"),
     path('noticias/noticia/<int:id>', noticiaespecifica, name="noticiaespecifica"),
     path('noticias/admin/', adminnoticias ,name="adminnoticias"),

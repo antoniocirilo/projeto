@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block conteudo %}
+{% load my_tags %}
 <div class="container">
 	<h4 class="text-end"><a href="{% url 'cadastronoticia' %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">CADASTRAR NOTÍCIA</button></a></h4>
 	<h4 class="text-end"><a href="{% url 'aniversariantes' %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">ANIVERSARIANTES</button></a></h4>
@@ -58,5 +59,26 @@
 	</div>
 	<br>
 	{% endfor %}
+		<br>
+	<div class="row">
+      <div class="col-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {% if contacts.has_previous %}
+            <li class="page-item"><a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">Mais novos</a></li>
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.previous_page_number 'page' request.GET.urlencode %}">Anterior</a></li>
+            {% endif %}
+
+            {% if contacts.has_next %}
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.next_page_number 'page' request.GET.urlencode %}">Próximo</a></li>
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.paginator.num_pages 'page' request.GET.urlencode %}">Mais antigos</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <span class="current">
+          Página {{ contacts.number }} de {{ contacts.paginator.num_pages }}.
+        </span>
+      </div>
+    </div>
 </div>
 {% endblock %}

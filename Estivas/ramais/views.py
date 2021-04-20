@@ -7,10 +7,12 @@ from datetime import datetime
 # Create your views here.
 def home(request):
 	noticia1 = Noticia.objects.all().order_by('-id')[:3]
-	aniversariantes = Aniversariante.objects.all().order_by('nome')
+	aniversariantes = Aniversariante.objects.all()
+	informativo = Informativo.objects.all().order_by('-id')[:1]
 	contexto = {
 	'noticias': noticia1,
-	'aniversariantes': aniversariantes
+	'aniversariantes': aniversariantes,
+	'informativo': informativo
 	}
 	return render(request, 'index.html', contexto)
 '''
@@ -19,8 +21,12 @@ noticias
 
 def noticias(request):
 	noticias = Noticia.objects.all().order_by('-id')
+	paginator = Paginator(noticias, 10)
+	page = request.GET.get('page')
+	contacts = paginator.get_page(page)
 	contexto = {
-	'noticias': noticias
+	'noticias': noticias,
+	'contacts': contacts
 	}
 	return render(request, 'noticias/noticias.html', contexto)
 
@@ -33,8 +39,12 @@ def noticiaespecifica(request, id):
 
 def adminnoticias(request):
 	noticias = Noticia.objects.all().order_by('-id')
+	paginator = Paginator(noticias, 10)
+	page = request.GET.get('page')
+	contacts = paginator.get_page(page)
 	contexto = {
-	'noticias': noticias
+	'noticias': noticias,
+	'contacts': contacts
 	}
 	return render(request, 'noticias/adminnoticias.html', contexto)
 
@@ -137,6 +147,12 @@ def atualizarinformativo(request, id):
 	}
 	return render(request, 'informativo/cadastroinformativo.html', contexto)
 
+def infoespecifico(request, mes):
+	informativo = Informativo.objects.get(mes=mes)
+	contexto = {
+	'informativo': informativo
+	}
+	return render(request, 'informativo/infoespecifico.html', contexto)
 '''
 Lista de colaboradores
 '''

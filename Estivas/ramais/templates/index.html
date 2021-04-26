@@ -14,8 +14,11 @@
 {% block conteudo %}
 <div class="container">
 	<div class="row">
-		<div class="col-12">
+		<div class="col-md-8">
 			<h3>Últimas Adicionadas</h3>
+		</div>
+		<div class="col-md-4">
+			<h3>Aniversariantes do dia:</h3>
 		</div>
 	</div>
 	{% for noticia in noticias %}
@@ -35,7 +38,6 @@
 		</div>
 		{% if forloop.first %}
 		<div class="col-md-4 imagem">
-			<h3>Aniversariantes do dia:</h3>
 			<small>Clique na imagem para ampliar</small>
 			{% for aniversariante in aniversariantes %}
 			<a href="/media/{{aniversariante.padrao}}" target="_blank">

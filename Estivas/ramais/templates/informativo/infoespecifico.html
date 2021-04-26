@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>Informativo - {{informativo.mes}}</title>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container fundo-imagem">
+	<div class="row">
+	<h1 class="text-center">Informativo - Usina Estivas</h1>
+	<h2 class="text-center">{{informativo.mes}}</h2>
+	</div>
+
+	<div class="row">
+		<div class="col-md-8 foto-noticia">
+			<p class="text-center"><img class="img-fluid img-thumbnail" src="/media/{{informativo.fotoinformativo}}"></p>
+		</div>
+		<div class="col-md-4">
+			<p>{{noticia.noticia}}</p>
+			{% if noticia.anexo != "" %}
+			<a href="/media/{{informativo.anexo}}" target="_blank"> <button class="btn btn-success">Baixar Informativo</button></a>
+			{% else %}
+			
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

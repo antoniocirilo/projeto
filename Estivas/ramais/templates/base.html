@@ -17,13 +17,20 @@
 			margin-top: -20px;
 			font-size: 13px;
 		}
+		.cabecalho {
+			background-color: #1c4049;
+			padding: 0px 60px;
+		}
+		.navbar-nav a:hover{
+			color: #a1c83d;
+		}
 	</style>
 </head>
 <body>
-	<div class="container" style="background-color: #1c4049;">
+	<div class="container-fluid cabecalho">
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="{% url 'inicial' %}">
+				<a class="navbar-brand" href="{% url 'home' %}">
 					<img src="{% static 'imagens/estiva.png' %}" alt="" width="150" height="60" class="d-inline-block align-text-top">
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +38,9 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
+						<a class="link-light nav-link" aria-current="page" href="{% url 'home' %}">Início</a>
+						<a class="link-light nav-link" aria-current="page" href="{% url 'noticias' %}">Notícias</a>
+						<a class="link-light nav-link" aria-current="page" href="https://webmail.usinaestivas.com.br/" target="_blank">Email</a>
 						<a class=" link-light nav-link" aria-current="page" href="{% url 'inicial' %}">Lista de colaboradores</a>
         <!--
         <a class="nav-link" href="#">Features</a>
@@ -39,10 +49,27 @@
 </div>
 </div>
 </nav>
-<p class="float-end tecnologia"> By: Tecnologia da Informação</p>
 </div>
 <br>
 {% block conteudo %}
 {% endblock %}
+<br>
+<div class="container-fluid cabecalho">
+		<div class="container-fluid">
+			<ul class="nav justify-content-center">
+				<li class="nav-item">
+					<a class="link-light nav-link" aria-current="page" href="#">Email: ti@usinaestivas.com.br</a>
+				</li>
+				<li class="nav-item">
+					<a class="link-light nav-link" aria-current="page" href="#">Ramal: 4810 e 4811</a>
+				</li>
+				<li class="nav-item text-end">
+					<a class="link-light nav-link" aria-current="page" href="#">By: Tecnologia da Informação</a>
+				</li>
+			</ul>
+		</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 </body>
 </html>

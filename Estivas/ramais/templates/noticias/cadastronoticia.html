@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>CADASTRO</title>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+	{% if form.errors %}
+<div class="alert alert-danger">
+        <strong>ERRO AO CADASTRAR ESSA NOTÍCIA</strong>
+    </div>
+{% endif %}
+<div class="row">
+	<div class="row">
+		<div class="col-md-12 col-12">
+			<h1 class="text-center">Cadastro de notícia</h1>
+		</div>
+	</div>
+	<br>
+</div>
+<form method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Título:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.titulo class="form-control"%} 
+		</div>
+
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Subtítulo:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.subtitulo class="form-control"%} 
+		</div>
+
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Notícia:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.noticia class="form-control"%} 
+		</div>
+
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Imagem:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.imagem class="form-control"%} 
+		</div>
+
+	<div class="col-auto">
+			<label for="inputPassword6" class="col-form-label">Anexo:</label>
+		</div>
+		<div class="col-auto">
+			{% render_field form.anexo class="form-control"%} 
+		</div>
+	<br>
+	<button type="submit" class="btn btn-outline-success">Salvar notícia</button>
+</form>
+</div>
+{% endblock %}

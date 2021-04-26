@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>Página Inicial</title>
+<style type="text/css">
+	small{
+		color: grey
+	}
+</style>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h3>Últimas Adicionadas</h3>
+		</div>
+		<div class="col-md-4">
+			<h3>Aniversariantes do dia:</h3>
+		</div>
+	</div>
+	{% for noticia in noticias %}
+	<div class="row">
+		<div class="col-md-3 col-4 imagem">
+			<a href="{% url 'noticiaespecifica' noticia.id %}" class="noticia-link" elevateZoom>
+				<img class="img-fluid img-thumbnail" src="/media/{{noticia.imagem}}">
+			</a>
+		</div>
+		<div class="col-md-5 col-8 noticia">
+			<small>{{noticia.datahora}}</small>
+			<a href="{% url 'noticiaespecifica' noticia.id %}" class="noticia-link">
+				<h4>{{noticia.titulo}}</h4>
+				<h5>{{noticia.subtitulo}}</h5>
+				<small class="">Clique para saber mais</small>
+			</a>
+		</div>
+		{% if forloop.first %}
+		<div class="col-md-4 imagem">
+			<small>Clique na imagem para ampliar</small>
+			{% for aniversariante in aniversariantes %}
+			<a href="/media/{{aniversariante.padrao}}" target="_blank">
+			<img class="img-fluid img-thumbnail" src="/media/{{aniversariante.padrao}}">
+			</a>
+			{% endfor %}
+		</div>
+		{% endif%}
+
+		{% if forloop.counter == 2 %}
+		<div class="col-md-4 imagem">
+			{% for informativo in informativo %}
+			<h3>Informativo do mês de {{informativo.mes}}</h3>
+			<small>Clique no informativo para saber mais</small>
+						<a href="{% url 'infoespecifico' informativo.mes %}">
+			<img class="img-fluid img-thumbnail" src="/media/{{informativo.fotoinformativo}}">
+		</a>
+			{% endfor %}
+		</div>
+		{% endif%}
+
+		{% if forloop.counter == 3 %}
+		<div class="col-md-4">
+			
+		</div>
+		{% endif%}
+	</div>
+	<br>
+	{% endfor %}
+</div>
+{% endblock %}

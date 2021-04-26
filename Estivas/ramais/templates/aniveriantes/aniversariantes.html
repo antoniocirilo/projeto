@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>Noticias - Aniversariantes</title>
+{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+	<h4 class="text-end"><a href="{% url 'cadastroaniversariantes'  %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">CADASTRAR ANIVERSARIANTES</button></a></h4>
+	<div class="row">
+		<div class="col-12">
+			<h3>Aniversariantes do dia:</h3>
+		</div>
+	</div>
+	{% for aniversariante in aniversariantes %}
+	<div class="row">
+		<div class="col-md-4">
+			<h3><img src="/media/{{aniversariante.padrao}}"></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<a href="{% url 'atualizaraniversariantes' aniversariante.id %} "><button type="button" class="btn botao btn-outline-success">EDITAR</button></a> 
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

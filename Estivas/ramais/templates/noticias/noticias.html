@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>Noticias</title>
+{% endblock %}
+
+{% block conteudo %}
+{% load my_tags %}
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h3>Todas as notícias</h3>
+		</div>
+	</div>
+	{% for noticia in contacts %}
+	<div class="row">
+		<div class="col-md-3 col-4 imagem">
+			<a href="{% url 'noticiaespecifica' noticia.id %}" class="noticia-link" elevateZoom>
+			<img class="img-fluid img-thumbnail" src="/media/{{noticia.imagem}}">
+		</a>
+		</div>
+		<div class="col-md-7 col-8 noticia">
+			<small>{{noticia.datahora}}</small>
+			<a href="{% url 'noticiaespecifica' noticia.id %}" class="noticia-link">
+			<h4>{{noticia.titulo}}</h4>
+			<h5>{{noticia.subtitulo}}</h5>
+			<small class="">Clique para saber mais</small>
+			</a>
+		</div>
+	</div>
+	<br>
+	{% endfor %}
+	<br>
+	<div class="row">
+      <div class="col-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {% if contacts.has_previous %}
+            <li class="page-item"><a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">Mais novos</a></li>
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.previous_page_number 'page' request.GET.urlencode %}">Anterior</a></li>
+            {% endif %}
+
+            {% if contacts.has_next %}
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.next_page_number 'page' request.GET.urlencode %}">Próximo</a></li>
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.paginator.num_pages 'page' request.GET.urlencode %}">Mais antigos</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <span class="current">
+          Página {{ contacts.number }} de {{ contacts.paginator.num_pages }}.
+        </span>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+<title>Noticias - admin</title>
+{% endblock %}
+
+{% block conteudo %}
+{% load my_tags %}
+<div class="container">
+	<h4 class="text-end"><a href="{% url 'cadastronoticia' %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">CADASTRAR NOTÍCIA</button></a></h4>
+	<h4 class="text-end"><a href="{% url 'aniversariantes' %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">ANIVERSARIANTES</button></a></h4>
+	<h4 class="text-end"><a href="{% url 'informativo' %}"><button type="button" class="btn botao btn-outline-primary btn-lg ">INFORMATIVO</button></a></h4>
+	<div class="row">
+		<div class="col-12">
+			<h3>Todas as notícias</h3>
+		</div>
+	</div>
+	{% for noticia in noticias %}
+	<div class="row">
+		<div class="col-md-3 col-4 imagem">
+			<a href="{% url 'noticiaespecifica' noticia.id %}" class="noticia-link" elevateZoom>
+			<img class="img-fluid img-thumbnail" src="/media/{{noticia.imagem}}">
+		</a>
+		</div>
+		<div class="col-md-7 col-8 noticia">
+			<a href="{% url 'noticiaespecifica' noticia.id %}" class="noticia-link">
+			<h4>{{noticia.titulo}}</h4>
+			<h5>{{noticia.subtitulo}}</h5>
+			</a>
+		</div>
+		<div class="col-md-2 col-12">
+			<a href="{% url 'atualizarnoticia' noticia.id %}"><button type="button" class="btn botao btn-outline-success">EDITAR</button></a> <br> <br>
+
+			<button type="button" class="btn botao btn-outline-danger" data-bs-toggle="modal" data-bs-target="#apagar-{{noticia.id}}">
+				APAGAR
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="apagar-{{noticia.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">APAGAR</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							Tem certeza que deseja apagar a notícia <b>{{noticia.titulo}} ({{noticia.subtitulo}})</b> para sempre?
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">NÃO</button>
+							<a href="{% url 'deletarnoticia' noticia.id %}"><button type="button" class="btn btn-primary">SIM</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	{% endfor %}
+		<br>
+	<div class="row">
+      <div class="col-12">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {% if contacts.has_previous %}
+            <li class="page-item"><a class="page-link" href="{% my_url 1 'page' request.GET.urlencode %}">Mais novos</a></li>
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.previous_page_number 'page' request.GET.urlencode %}">Anterior</a></li>
+            {% endif %}
+
+            {% if contacts.has_next %}
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.next_page_number 'page' request.GET.urlencode %}">Próximo</a></li>
+            <li class="page-item"><a class="page-link" href="{% my_url contacts.paginator.num_pages 'page' request.GET.urlencode %}">Mais antigos</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+        <span class="current">
+          Página {{ contacts.number }} de {{ contacts.paginator.num_pages }}.
+        </span>
+      </div>
+    </div>
+</div>
+{% endblock %}
